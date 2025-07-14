@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Web Xử Lý Hình Ảnh</title>
+</head>
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registeration</span>
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email password</span>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <a href="#">Forget Your Password?</a>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Giao diện xử lý hình ảnh, ẩn mặc định -->
+    <div class="container wide-container" id="imageApp">
+        <h1>Xử Lý Hình Ảnh</h1>
+        <div class="feature-bar">
+            <input type="file" id="imageInput" accept="image/*">
+            <button class="feature-btn" onclick="removeBg()"><i class="fa-solid fa-scissors"></i> Xoá nền</button>
+            <button class="feature-btn" onclick="showResize()"><i class="fa-solid fa-expand-arrows-alt"></i> Đổi kích thước (px)</button>
+            <button class="feature-btn" onclick="showCrop()"><i class="fa-solid fa-crop"></i> Cắt Ảnh</button>
+        </div>
+        <div class="row-flex">
+            <div class="col-flex left-panel">
+                <div id="resizeForm" style="display:none;">
+                    <input type="number" id="resizeWidth" placeholder="Width(px)">
+                    <input type="number" id="resizeHeight" placeholder="Height(px)">
+                    <button onclick="resizeImage()">Thực hiện</button>
+                </div>
+                <div id="cropForm" style="display:none;">
+                    <select id="cropRatio">
+                        <option value="3:3">3:3</option>
+                        <option value="9:16">9:16</option>
+                        <option value="3:4">3:4</option>
+                        <option value="16:9">16:9</option>
+                    </select>
+                    <button onclick="cropImage()">Thực hiện</button>
+                </div>
+            </div>
+            <div class="col-flex right-panel">
+                <h2 style="text-align:center;">Kết quả</h2>
+                <img id="resultImg" style="max-width:100%;">
+                <div style="text-align:center; margin-top: 16px;">
+                    <a id="downloadBtn" href="#" download="ketqua.png" style="display:none;">
+                        <button type="button">Tải ảnh xuống</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+    // Khi submit form đăng nhập, ẩn login và hiện app xử lý ảnh
+    document.querySelectorAll('.sign-in form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.body.classList.add('logged-in');
+        });
+    });
+    </script>
+</body>
+</html>
