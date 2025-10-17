@@ -1,6 +1,0 @@
-Flask
-opencv-python
-numpy
-Pillow
-rembg
-flask-cors

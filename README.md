@@ -13,6 +13,7 @@
 cd backend
 pip install -r requirements.txt
 python app.py
+cài đặt thư viện trong file requirement.txt
 ```
 
 ## Chạy frontend
